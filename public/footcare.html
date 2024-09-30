@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footcare Essentials</title>
+    <link rel="icon" type="image/x-icon" href="images/LOGO.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        /* Logo adjustments */
+        .logo-img {
+            margin-top: -20px; 
+            margin-bottom: -20px; 
+            width: 75px; 
+            height: 75px; 
+        }
+
+        /* Navbar adjustments */
+        .navbar-nav .nav-link {
+            font-size: 16px; /* Adjust font size */
+            padding: 10px;   /* Adjust spacing */
+        }
+        .bg-dark {
+        --bs-bg-opacity: 1;
+        background-color: #440107 !important;
+        }
+        .navbar-nav .dropdown-menu {
+         background-color: #440107;
+        }
+
+        header {
+            background: linear-gradient(135deg, #440107, #8B0000);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-weight: 600;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            color: #440107;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #440107;
+        }
+        .footcare-section {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        .footcare-section p, .footcare-section li {
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        .shoe-item {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .shoe-item:hover {
+            transform: translateY(-5px);
+        }
+        .shoe-item img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #440107;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+     <!-- Fixed Top Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/LOGO.png" alt="iSUKAT" width="100" height="100" class="d-inline-block align-top logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="homepage.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house me-2" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active d-flex align-items-center" href="footcare.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bookmark-heart me-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                            </svg>
+                            Footcare
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera me-2" viewBox="0 0 16 16">
+                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
+                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                            </svg>
+                            iSUKAT MO
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="real.html">Foot Size</a></li>
+                            <li><a class="dropdown-item" href="isukat.html">Foot Type</a></li>
+                            <li><a class="dropdown-item" href="try.html">Shoe Brand</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="user-profile.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                            </svg>
+                            User Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right me-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="mb-5">
+        <div class="container">
+            <h1 class="display-4">Footcare Essentials</h1>
+            <p class="lead">Step Confidently with Healthy Feet, Every Day</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="footcare-section">
+            <h2 class="section-title">The Importance of Footcare</h2>
+            <p>Our feet bear the weight of our body and are key to mobility. Proper foot care is essential for overall health, as neglecting them can lead to discomfort, infections, and long-term issues.</p>
+            <p>Simple habits like regular cleaning, moisturizing, and wearing well-fitted shoes can prevent common problems such as cracked heels and foot pain. Additionally, taking breaks when you're on your feet for extended periods helps maintain foot health.</p>
+            <p>For more information, visit <a href="https://www.caryortho.com/the-importance-of-taking-care-of-your-feet/#:~:text=Why%20take%20care%20of%20your,can%20greatly%20impact%20your%20mobility." target="_blank">Cary Orthopaedic's guide to footcare</a>.</p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h4>Regular foot care can prevent:</h4>
+                    <ul>
+                        <li>Fungal infections like athlete's foot</li>
+                        <li>Ingrown toenails</li>
+                        <li>Corns and calluses</li>
+                        <li>Foot odor</li>
+                        <li>Diabetic foot complications</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/healthyfeet.jpg" alt="Healthy Feet" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+        <section class="footcare-section">
+            <h2 class="section-title">Daily Foot Care Routine</h2>
+            <p>Our feet play a crucial role in our daily activities, yet they often lack proper care. A good foot care routine is essential for maintaining healthy, pain-free feet. Whether you need general tips or specialized advice, this guide covers it all.</p>
+            
+            <h4>General Foot Care Tips</h4>
+            <ol>
+                <li><strong>Clean and Inspect:</strong> Wash with warm water and mild soap, focusing on the spaces between toes. Dry thoroughly and check for cuts or blisters.</li>
+                <li><strong>Moisturize:</strong> Apply lotion daily, avoiding between toes to prevent fungal infections.</li>
+                <li><strong>Trim Nails:</strong> Cut straight across and file edges to avoid ingrown nails.</li>
+                <li><strong>Choose Proper Footwear:</strong> Wear well-fitting shoes and replace worn-out pairs.</li>
+                <li><strong>Maintain Hygiene:</strong> Change socks regularly and opt for moisture-wicking materials.</li>
+            </ol>
+        
+            <h4>Specialized Foot Care</h4>
+            <h5>Diabetic Care</h5>
+            <ul>
+                <li><strong>Daily Checks:</strong> Inspect feet for cuts or color changes and seek prompt medical help if needed.</li>
+                <li><strong>Supportive Shoes:</strong> Choose well-fitting shoes and consider custom orthotics.</li>
+                <li><strong>Professional Care:</strong> Schedule regular podiatrist visits for tailored advice.</li>
+            </ul>
+        
+            <h5>Pediatric Care</h5>
+            <ul>
+                <li><strong>Proper Footwear:</strong> Ensure shoes fit correctly and provide support; check sizes frequently.</li>
+                <li><strong>Barefoot Play:</strong> Encourage safe barefoot activities to promote development.</li>
+                <li><strong>Monitor Growth:</strong> Consult a podiatrist for any foot irregularities.</li>
+            </ul>
+            
+            <p>For more detailed foot care routines, visit <a href="https://integrityfootandankle.com/good-foot-care-routine/" target="_blank">Integrity Foot & Ankle</a>.</p>
+        </section>
+        
+        
+        
+        <section class="footcare-section">
+            <h2 class="section-title">Different Foot Types</h2>
+        
+            <div class="mb-4">
+                <img src="images/feettypes.jpg" alt="Illustration of Different Foot Types" class="img-fluid rounded mb-3">
+            </div>
+        
+            <div class="mb-4">
+                <h3>1. Egyptian Feet</h3>
+                <div>
+                    <h4>Characteristics:</h4>
+                    <p>The big toe is longer than the others, creating a neat downward slant. This alignment makes it easy to fit into most shoes and may be prone to bunions as the big toe can drift toward the smaller toes over time.</p>
+                    <h4>Care Tips:</h4>
+                    <ul>
+                        <li>Pay attention to the alignment of the big toe to prevent bunions.</li>
+                        <li>Choose shoes with a wider toe box to accommodate the foot's shape.</li>
+                    </ul>
+                    <h4>Shoe Recommendations:</h4>
+                    <ul>
+                        <li>Opt for shoes that offer ample room for the toes.</li>
+                        <li>Consider styles with a slightly pointed toe to fit the shape.</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="mb-4">
+                <h3>2. Greek Feet</h3>
+                <div>
+                    <h4>Characteristics:</h4>
+                    <p>The second toe is longer than the big toe, creating a pointed shape. This can lead to discomfort if shoes don’t provide enough space for the longer second toe.</p>
+                    <h4>Care Tips:</h4>
+                    <ul>
+                        <li>Wear protective pads if discomfort arises.</li>
+                        <li>Choose shoes that allow for a roomy fit for the second toe.</li>
+                    </ul>
+                    <h4>Shoe Recommendations:</h4>
+                    <ul>
+                        <li>Look for shoes with a wide toe box.</li>
+                        <li>Avoid narrow or pointed shoes to prevent discomfort.</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="mb-4">
+                <h3>3. Roman Feet</h3>
+                <div>
+                    <h4>Characteristics:</h4>
+                    <p>The first three or four toes are of similar length, while the remaining toes are shorter. This type often has high arches and may be susceptible to hammer toes.</p>
+                    <h4>Care Tips:</h4>
+                    <ul>
+                        <li>Focus on maintaining flexibility through foot exercises.</li>
+                        <li>Wear supportive shoes to accommodate high arches.</li>
+                    </ul>
+                    <h4>Shoe Recommendations:</h4>
+                    <ul>
+                        <li>Choose shoes with a rounded toe box.</li>
+                        <li>Look for good arch support to maintain foot structure.</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="mb-4">
+                <h3>4. Germanic Feet</h3>
+                <div>
+                    <h4>Characteristics:</h4>
+                    <p>The big toe is longer than all other toes, forming a straight line that steps down from the big toe. The foot has a rectangular shape, often with a smaller pinky toe.</p>
+                    <h4>Care Tips:</h4>
+                    <ul>
+                        <li>Choose wider shoes to avoid compression of the toes.</li>
+                        <li>Regularly check for any signs of bunions or discomfort.</li>
+                    </ul>
+                    <h4>Shoe Recommendations:</h4>
+                    <ul>
+                        <li>Opt for wide-width shoes to prevent rubbing and bunching.</li>
+                        <li>Consider shoes with a roomy toe box for comfort.</li>
+                    </ul>
+                </div>
+            </div>
+        
+            <div>
+                <h3>Know Your Foot Type to Avoid Problems</h3>
+                <p>Understanding your foot type can guide you in selecting footwear that provides proper support and comfort, helping you anticipate and manage potential foot health issues.</p>
+            </div>
+            
+            <div class="source-link">
+                <p>For more information about foot types, visit <a href="https://kcfoot.com/there-are-nine-types-of-feet">kcfoot.com</a></p>
+            </div>
+        </section>
+        
+        <section class="footcare-section">
+            <h2 class="section-title">How to Find the Right Shoes</h2>
+            <p>Shoes protect our feet, cushion our body weight, and can enhance comfort and style. Finding the right fit is crucial to avoid pain and foot problems like bunions, hammertoes, and plantar fasciitis. Follow these tips:</p>
+            
+            <ul>
+                <li><strong>Measure Your Feet:</strong> Have your feet measured regularly, especially at the end of the day when they're largest.</li>
+                <li><strong>Fit to the Larger Foot:</strong> Ensure shoes accommodate the larger foot.</li>
+                <li><strong>Don't Rely on Size Alone:</strong> Sizes vary by brand; try shoes on for a proper fit.</li>
+                <li><strong>Check Shoe Shape:</strong> The shoe should match the shape of your foot.</li>
+                <li><strong>Assess Width and Depth:</strong> Ensure enough room in the toe box and that the shoe is deep enough to avoid rubbing.</li>
+                <li><strong>Check Space at the End:</strong> There should be about 3/8" to 1/2" of space between your longest toe and the end of the shoe.</li>
+                <li><strong>Walk Around:</strong> Always stand and walk in the shoes to ensure comfort and prevent chafing.</li>
+            </ul>
+        
+            <h3>Additional Tips:</h3>
+            <ul>
+                <li><strong>Match Shoes to Activities:</strong> Different activities require specific footwear (e.g., running, walking, cross-training).</li>
+                <li><strong>Look for Good Construction:</strong> Shoes should have a cushioned heel, firm sole, and proper flexibility.</li>
+                <li><strong>Consider Breathable Materials:</strong> Opt for soft, breathable uppers to reduce irritation.</li>
+                <li><strong>Arch Support:</strong> Ensure adequate arch support, either built-in or with quality orthotics.</li>
+            </ul>
+        
+            <p>For detailed guidance, visit <a href="https://www.footcaremd.org/resources/how-to-help/10-points-of-proper-shoe-fit">FootCareMD</a>.</p>
+        </section>
+        
+
+        <section class="footcare-section">
+            <h2 class="section-title">Common Foot Problems</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <img src="images/athlete.jpg" class="card-img-top" alt="Illustration of Athlete's Foot">
+                        <div class="card-body">
+                            <h3 class="card-title">Athlete's Foot</h3>
+                            <p class="card-text">A fungal infection causing itching and burning. Keep feet dry and use antifungal treatments.</p>
+                         
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <img src="images/plantar.jpeg" class="card-img-top" alt="Illustration of Plantar Fasciitis">
+                        <div class="card-body">
+                            <h3 class="card-title">Plantar Fasciitis</h3>
+                            <p class="card-text">Heel pain caused by inflammation. Stretch regularly and wear supportive shoes.</p>
+                          
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <img src="images/bunions.jpeg" class="card-img-top" alt="Illustration of Bunions">
+                        <div class="card-body">
+                            <h3 class="card-title">Bunions</h3>
+                            <p class="card-text">Bony bumps at the base of the big toe. Wear wide shoes and use padding for comfort.</p>
+                           
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <img src="images/ingrown.jpeg" class="card-img-top" alt="Illustration of Ingrown Toenails">
+                        <div class="card-body">
+                            <h3 class="card-title">Ingrown Toenails</h3>
+                            <p class="card-text">Painful condition where the nail grows into the skin. Trim nails straight across and wear proper fitting shoes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="additional-info">
+                <h3>Other Common Foot Problems:</h3>
+                <ul>
+                    <li><strong>Diabetic Neuropathy:</strong> Nerve damage leading to numbness; maintain blood sugar control.</li>
+                    <li><strong>Blisters:</strong> Fluid-filled pockets from friction; avoid popping them for healing.</li>
+                    <li><strong>Corns:</strong> Thickened skin for protection; can become painful; corn plasters may help.</li>
+                    <li><strong>Heel Spurs:</strong> Calcium outgrowths that may cause pain; rest and orthotics are recommended.</li>
+                    <li><strong>Claw Toe:</strong> Toes curl; treatments include proper shoes and possibly surgery.</li>
+                    <li><strong>Stone Bruise:</strong> Pain in the foot's ball; rest and better fitting shoes can alleviate symptoms. 
+                    <p>For detailed information, visit <a href="https://www.medicalnewstoday.com/articles/319190">MedicalNewsToday</a>.</p>
+                </ul>
+            </div>
+        </section>
+
+        <section class="footcare-section">
+            <h2 class="section-title">When to See a Podiatrist</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>If you’re facing foot or ankle issues, a podiatrist can help with specialized care. See a podiatrist if you experience any of the following:</p>
+                    <ul>
+                        <li>Numbness, pain, or swelling in one foot without a clear cause</li>
+                        <li>Persistent nail fungus that doesn’t improve with over-the-counter treatments</li>
+                        <li>Ongoing heel pain or signs of a possible sprain or fracture</li>
+                        <li>Recurrent athlete’s foot or painful ingrown toenails</li>
+                        <li>Conditions like bunions, corns, or calluses causing discomfort</li>
+                        <li>Foot or ankle joint pain that doesn't resolve with anti-inflammatory medication</li>
+                    </ul>
+                    <p>Regular checkups are essential for individuals with diabetes, as they’re more prone to foot-related complications. Taking care of your feet can prevent more serious issues from developing.</p>
+                    <p>For more details, visit <a href="https://www.southshorehealth.org/wellness/blog/ten-signs-its-time-see-podiatrist">South Shore Health</a>.</p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/podiatrist.jpg" alt="Podiatrist Visit" class="img-fluid rounded">
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="m-0">Step into a healthier life with proper <span class="highlight">footcare</span></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

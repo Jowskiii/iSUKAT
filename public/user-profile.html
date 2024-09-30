@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/LOGO.ico">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons (Optional for Consistent Icon Usage) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+
+    <!-- Axios for HTTP Requests -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        body, html {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        .profile-container {
+            max-width: 100%;
+            padding: 0 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 450px;
+            margin: 0;
+        }
+
+        @media (max-width: 576px) {
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .row {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+
+            .profile-container {
+                min-height: 750px;
+            }
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .logo-img {
+            margin-top: -20px; 
+            margin-bottom: -20px; 
+            width: 75px; 
+            height: 75px; 
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .bg-dark {
+            --bs-bg-opacity: 1;
+            background-color: #440107 !important;
+        }
+
+        .btn-success {
+            --bs-btn-color: #fff;
+            --bs-btn-bg: #440107;
+        }
+
+        /* Product Grid and Card Styles */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: contain;
+        }
+
+        .navbar-nav .dropdown-menu {
+         background-color: #440107;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="images/LOGO.png" alt="iSUKAT" width="100" height="100" class="d-inline-block align-top logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" aria-current="page" href="homepage.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house me-2" viewBox="0 0 16 16">
+                                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="footcare.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bookmark-heart me-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+                                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"/>
+                            </svg>
+                            Footcare
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-camera me-2" viewBox="0 0 16 16">
+                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4z"/>
+                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5m0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0"/>
+                            </svg>
+                            iSUKAT MO
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="real.html">Foot Size</a></li>
+                            <li><a class="dropdown-item" href="isukat.html">Foot Type</a></li>
+                            <li><a class="dropdown-item" href="try.html">Shoe Brand</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active align-items-center" href="user-profile.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
+                            </svg>
+                            User Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="index.html">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-right me-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+                                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                            </svg>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Profile Content -->
+    <div class="container profile-container my-5">
+        <div class="row justify-content-center">
+            <!-- User Information Card -->
+            <div class="col-12 col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h4>User Profile</h4>
+                    </div>
+                    <div class="card-body" id="profile-info">
+                        <!-- User info will be injected here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Profile Card -->
+            <div class="col-12 col-md-6">
+                <div class="card shadow-sm mt-3 mt-md-0">
+                    <div class="card-header bg-dark text-white text-center">
+                        <h4>Edit Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="edit-profile-form">
+                            <div class="mb-3">
+                                <label for="first-name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="first-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="last-name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="last-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import favorite-sync.js as a Module -->
+    <script type="module">
+        import { initFavoritesSync, registerFavoritesCallback } from './favorite-sync.js';
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+        import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
+        
+        // Initialize Favorites Synchronization
+        initFavoritesSync();
+
+        // Register a Callback to Handle Favorites Updates
+        registerFavoritesCallback((favorites) => {
+            displayFavoriteItems(favorites);
+        });
+
+        // Function to Display Favorite Items
+        function displayFavoriteItems(favorites) {
+            const favoriteItemsContainer = document.getElementById('favorite-items');
+            favoriteItemsContainer.innerHTML = ''; // Clear existing items
+
+            const favoriteShoeIds = Object.keys(favorites);
+
+            if (favoriteShoeIds.length > 0) {
+                favoriteShoeIds.forEach(shoeId => {
+                    if (shoeId) {  // Ensure shoeId is valid
+                        axios.get(`/shoes/${shoeId}`)
+                            .then(response => {
+                                const shoe = response.data;
+                                const shoeCard = document.createElement('div');
+                                shoeCard.className = 'product-card';
+                                shoeCard.innerHTML = `
+                                    <img src="${shoe.thumbnail}" alt="${shoe.shoeName}">
+                                    <h5>${shoe.shoeName}</h5>
+                                    <p>Brand: ${shoe.brand}</p>
+                                    <p>Price: $${shoe.retailPrice}</p>
+                                    <button class="btn btn-primary btn-sm" onclick="showShoeDetails('${shoe.id}')">
+                                        View Details
+                                    </button>
+                                `;
+                                favoriteItemsContainer.appendChild(shoeCard);
+                            })
+                            .catch(error => {
+                                console.error('Error fetching shoe details:', error);
+                            });
+                    } else {
+                        console.error('Shoe ID is undefined');
+                    }
+                });
+            } else {
+                favoriteItemsContainer.innerHTML = '<p>No favorite items found.</p>';
+            }
+        }
+
+        // Function to Show Shoe Details (Optional: Implement Modal Similar to Homepage)
+        function showShoeDetails(shoeId) {
+            // Implement a modal popup similar to the homepage's shoe details modal
+            // For demonstration, we'll simply alert the shoe ID
+            alert(`Show details for shoe ID: ${shoeId}`);
+        }
+
+        // Handle Profile Editing
+        document.getElementById('edit-profile-form').addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            // Import necessary Firebase functions
+            
+
+            const auth = getAuth();
+            const db = getDatabase();
+
+            const user = auth.currentUser;
+
+            if (user) {
+                const uid = user.uid;
+                const userRef = ref(db, `users/${uid}`);
+
+                const firstName = document.getElementById('first-name').value.trim();
+                const lastName = document.getElementById('last-name').value.trim();
+                const email = document.getElementById('email').value.trim();
+
+                // Update User Data in Firebase
+                update(userRef, {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email
+                }).then(() => {
+                    alert('Profile updated successfully!');
+                    document.getElementById('profile-info').innerHTML = `
+                        <p><strong>First Name:</strong> ${firstName || 'N/A'}</p>
+                        <p><strong>Last Name:</strong> ${lastName || 'N/A'}</p>
+                        <p><strong>Email:</strong> ${email || 'N/A'}</p>
+                    `;
+                }).catch((error) => {
+                    console.error("Error updating user data:", error);
+                    alert('Failed to update profile. Please try again.');
+                });
+            } else {
+                alert('No user is currently logged in.');
+            }
+        });
+
+        // Initialize Profile Information and Favorite Items
+        document.addEventListener('DOMContentLoaded', () => {
+            // Import necessary Firebase functions
+           
+            const auth = getAuth();
+            const db = getDatabase();
+
+            // Listen for authentication state changes
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    const uid = user.uid;
+                    const userRef = ref(db, `users/${uid}`);
+
+                    // Fetch and Display User Information
+                    get(userRef).then((snapshot) => {
+                        if (snapshot.exists()) {
+                            const userData = snapshot.val();
+                            document.getElementById('first-name').value = userData.firstName || '';
+                            document.getElementById('last-name').value = userData.lastName || '';
+                            document.getElementById('email').value = userData.email || '';
+
+                            document.getElementById('profile-info').innerHTML = `
+                                <p><strong>First Name:</strong> ${userData.firstName || 'N/A'}</p>
+                                <p><strong>Last Name:</strong> ${userData.lastName || 'N/A'}</p>
+                                <p><strong>Email:</strong> ${userData.email || 'N/A'}</p>
+                            `;
+                        } else {
+                            console.log("No user data found.");
+                        }
+                    }).catch((error) => {
+                        console.error("Error fetching user data:", error);
+                    });
+                } else {
+                    // Redirect to Homepage if Not Logged In
+                    window.location.href = "index.html";
+                }
+            });
+        });
+    </script>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
